@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimpleMailingService</name>
+    </assembly>
+    <members>
+        <member name="M:SimpleMailingService.Controllers.Mail.Send(SimpleMailingService.Models.SendMailRequest)">
+            <summary>Sends an email to the recipient defined</summary>
+            <remarks>
+            Note that the Recipients requires at least one Recipient.
+            
+            Note that the Recipient.Email is a string in 'email' format.
+            
+            Note that the Client is of type 'ClientEnum' not 'int'.
+            
+            Note that the Body is 'html/text'.
+            
+            Note that the Attachments are not required.
+            
+            Note that the Attachments[].Base64Content is a base64 encoded byte array.
+             
+                POST /api/v1/mail
+                {
+                   "Recipients": [{
+                        "Name": "Example Name",
+                        "Email": "example@example-host.com"
+                    }],
+                   "Subject": "example email subject",
+                   "Body": "<h1>Example body content</h1>",
+                   "Client": ClientEnum.Default,
+                   "Attachments":
+                        [{
+                            "Name": "example attachment name",
+                            "Base64Content": "",
+                            "MimeType": {
+                                "Type": "image",
+                                "SubType": "png"
+                        }]
+                    }
+                }
+            
+            </remarks>
+            <param name="request"></param>
+            <returns>IActionResult</returns>
+            <response code="204">Success</response>
+            <response code="400">Request model is invalid</response>
+            <response code="500">Email failed to send</response>
+        </member>
+        <member name="M:SimpleMailingService.Controllers.Mail.Test(System.String)">
+            <summary>Shows the html content produced when using HTMLBodyBuilder</summary>
+            <param name="referenceNumber"></param>
+            <returns>IActionResult</returns>
+        </member>
+    </members>
+</doc>
