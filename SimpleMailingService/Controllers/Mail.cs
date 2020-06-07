@@ -84,7 +84,7 @@ namespace SimpleMailingService.Controllers
         {
             var content = new HTMLBodyBuilder()
                 .StartHeader()
-                    .AddH1("Stockport Council")
+                    .AddH1("Example Heading")
                     .AddH2("Thank you for filling out a form")
                     .AddP("Some sub heading to do with the form")
                     .AddH3("Here is a random heading")
@@ -107,13 +107,13 @@ namespace SimpleMailingService.Controllers
             //    {
             //        new Recipient
             //        {
-            //            Email = "elliotthumphreys821@gmail.com",
-            //            Name = "Elliott Humphreys"
+            //            Email = "",
+            //            Name = ""
             //        },
             //        new Recipient
             //        {
-            //            Email = "e.j.humphreys@edu.salford.ac.uk",
-            //            Name = "Elliott Humphreys"
+            //            Email = "",
+            //            Name = ""
             //        }
             //    }
             //};
