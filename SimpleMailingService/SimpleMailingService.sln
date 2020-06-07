@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMailingService", "SimpleMailingService.csproj", "{200B3672-6733-4165-90DE-B7260C7524C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentBuilder", "..\ContentBuilder\ContentBuilder.csproj", "{05025B46-05EC-4789-9BB2-B276BF55B6BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{200B3672-6733-4165-90DE-B7260C7524C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{200B3672-6733-4165-90DE-B7260C7524C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{200B3672-6733-4165-90DE-B7260C7524C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{200B3672-6733-4165-90DE-B7260C7524C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05025B46-05EC-4789-9BB2-B276BF55B6BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05025B46-05EC-4789-9BB2-B276BF55B6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05025B46-05EC-4789-9BB2-B276BF55B6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05025B46-05EC-4789-9BB2-B276BF55B6BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A94F21E-43B0-4AC4-AC1D-E2C7F135F7EB}
+	EndGlobalSection
+EndGlobal
