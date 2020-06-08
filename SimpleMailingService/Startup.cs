@@ -3,22 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.PlatformAbstractions;
-using Microsoft.OpenApi.Models;
 using SimpleMailingService.Extensions;
 
 namespace SimpleMailingService
 {
     public class Startup
     {
-        public Startup(IWebHostEnvironment env) =>
-            Configuration = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile($"Configuration/app-settings.json")
-                .AddJsonFile($"Configuration/app-settings.{env.EnvironmentName}.json", true)
-                .AddJsonFile($"Configuration/secrets.app-settings.json")
-                .AddJsonFile($"Configuration/secrets.app-settings.{env.EnvironmentName}.json", true)
-                .Build();
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
@@ -27,20 +18,15 @@ namespace SimpleMailingService
             services.AddControllers();
             services
                 .AddServices()
+                .AddSwagger()
                 .AddConfiguration(Configuration);
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Simple Mailing Service", Version = "v1"});
-                c.IncludeXmlComments($"{PlatformServices.Default.Application.ApplicationBasePath}\\Simple-Mailing-Service.xml");
-            });
-
+            services.AddHealthChecks();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
-
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("./swagger/v1/swagger.json", "Simple Mailing Service - Version 1");
