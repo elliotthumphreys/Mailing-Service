@@ -11,7 +11,7 @@ namespace SimpleMailingService.Extensions
             if(options.Values.TryGetValue(clientEnum.ToString(), out var client))
                 return client;
 
-            throw new Exception($"ClientEnumExtensions.GetClient: Client '{clientEnum.ToString()}' does not exist.");
+            throw new Exception($"ClientEnumExtensions.GetClient: Client '{clientEnum}' does not exist in MailingService configuration.");
         }
     }
 }

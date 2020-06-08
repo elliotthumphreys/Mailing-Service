@@ -1,13 +1,13 @@
 ﻿using System;
-using ContentBuilder;
-using ContentBuilder.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SimpleMailingService.Models;
 using SimpleMailingService.Services;
+using StockportGovUK.AspNetCore.Attributes.TokenAuthentication;
 
 namespace SimpleMailingService.Controllers
 {
+    [TokenAuthentication]
     public class Mail : ControllerBase
     {
         private readonly ISendService _sendService;
@@ -17,19 +17,17 @@ namespace SimpleMailingService.Controllers
             _sendService = sendService;
         }
 
-        /// <summary>Sends an email to the recipient defined</summary>
+        /// <summary>Sends an email to multiple recipients.</summary>
         /// <remarks>
-        /// Note that the Recipients requires at least one Recipient.
+        /// Recipients requires at least one Recipient.
         /// 
-        /// Note that the Recipient.Email is a string in 'email' format.
+        /// Recipient.Email is a string in 'email' format.
         /// 
-        /// Note that the Client is of type 'ClientEnum' not 'int'.
+        /// Client is of type 'ClientEnum' and is not required.
         /// 
-        /// Note that the Body is 'html/text'.
+        /// Attachments are not required.
         /// 
-        /// Note that the Attachments are not required.
-        /// 
-        /// Note that the Attachments[].Base64Content is a base64 encoded byte array.
+        /// Attachments[].Base64Content is a base64 encoded byte array.
         ///  
         ///     POST /api/v1/mail
         ///     {
@@ -70,61 +68,10 @@ namespace SimpleMailingService.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Mail.Send: Failed to send email.");
             }
 
             return StatusCode(StatusCodes.Status204NoContent);
-        }
-
-        /// <summary>Shows an example of the html content produced when using HTMLBodyBuilder class library</summary>
-        /// <returns>IActionResult</returns>
-        [HttpGet]
-        [Route("test-builder")]
-        public IActionResult Test()
-        {
-            var content = new HTMLBodyBuilder()
-                .StartHeader()
-                    .AddH1("Example Heading")
-                    .AddH2("Thank you for filling out a form")
-                    .AddP("Some sub heading to do with the form")
-                    .AddH3("Here is a random heading")
-                    .AddP("Some more random p text")
-                    .EndHeader()
-                .AddP($"Your reference number: <strong>Example-Ref</strong>")
-                .AddH2("What happens next?")
-                .AddP("Someone will be in contact with you in the next 10 working days.")
-                .AddH3("Here is a random heading")
-                .AddP("Some more random p text")
-                .AddButton("Go to Homepage", "http://www.google.com")
-                .Build();
-
-            //var request = new SendMailRequest
-            //{
-            //    Body = content,
-            //    Subject = "Test email subject",
-            //    Client = ClientEnum.Personal,
-            //    Recipients = new List<Recipient>
-            //    {
-            //        new Recipient
-            //        {
-            //            Email = "",
-            //            Name = ""
-            //        },
-            //        new Recipient
-            //        {
-            //            Email = "",
-            //            Name = ""
-            //        }
-            //    }
-            //};
-
-            //Send(request);
-
-            return new ContentResult
-            {
-                ContentType = "text/html",
-                Content = content
-            };
         }
     }
 }

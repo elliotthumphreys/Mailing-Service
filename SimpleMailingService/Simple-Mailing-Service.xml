@@ -5,19 +5,17 @@
     </assembly>
     <members>
         <member name="M:SimpleMailingService.Controllers.Mail.Send(SimpleMailingService.Models.SendMailRequest)">
-            <summary>Sends an email to the recipient defined</summary>
+            <summary>Sends an email to multiple recipients.</summary>
             <remarks>
-            Note that the Recipients requires at least one Recipient.
+            Recipients requires at least one Recipient.
             
-            Note that the Recipient.Email is a string in 'email' format.
+            Recipient.Email is a string in 'email' format.
             
-            Note that the Client is of type 'ClientEnum' not 'int'.
+            Client is of type 'ClientEnum' and is not required.
             
-            Note that the Body is 'html/text'.
+            Attachments are not required.
             
-            Note that the Attachments are not required.
-            
-            Note that the Attachments[].Base64Content is a base64 encoded byte array.
+            Attachments[].Base64Content is a base64 encoded byte array.
              
                 POST /api/v1/mail
                 {
@@ -45,11 +43,6 @@
             <response code="204">Success</response>
             <response code="400">Request model is invalid</response>
             <response code="500">Email failed to send</response>
-        </member>
-        <member name="M:SimpleMailingService.Controllers.Mail.Test(System.String)">
-            <summary>Shows the html content produced when using HTMLBodyBuilder</summary>
-            <param name="referenceNumber"></param>
-            <returns>IActionResult</returns>
         </member>
     </members>
 </doc>
