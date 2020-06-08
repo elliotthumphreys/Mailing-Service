@@ -47,7 +47,7 @@ var request = new SendMailRequest
 
 Add your configuration for testing and production environments.
 
-```json
+```json5
 "TokenAuthentication": {
     "Key": "Your secret token here",
 },
@@ -93,7 +93,7 @@ public enum ClientEnum
 
 The WebAPI has only one endpoint `[POST] /api/v1/mail` which accepts a `SendMailRequest` model.
 
-```json
+```json5
 {
    "Recipients": [{
         "Name": "Example Name",
@@ -101,7 +101,7 @@ The WebAPI has only one endpoint `[POST] /api/v1/mail` which accepts a `SendMail
     }],
    "Subject": "example email subject",
    "Body": "<h1>Example body content</h1>",
-   "Client": ClientEnum.Personal,
+   "Client": 1, // ClientEnum.Personal
    "Attachments":
         [{
             "Name": "example attachment name",
