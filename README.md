@@ -145,3 +145,10 @@ var content = new HTMLBodyBuilder()
       .AddButton("Go to Link", "http://www.google.com")
       .Build();
 ```
+
+The above code produces the email content shown below.
+
+<p align="center">
+  <img src="https://iili.io/JvsPrQ.png" width="250" title="Mobile - dark mode">
+  <img src="https://iili.io/Jvs6Ex.png" width="100%" title="Desktop - light mode">
+</p>
